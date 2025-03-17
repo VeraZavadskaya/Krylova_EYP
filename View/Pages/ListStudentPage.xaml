@@ -1,0 +1,55 @@
+﻿<Page x:Class="Krylova_EYP.View.Pages.ListStudentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Krylova_EYP.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="370" d:DesignWidth="800"
+      Title="ListStudentPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Выберите группу" Grid.Row="1" FontSize="17"/>
+        <TextBlock Text="Выберите студента" Grid.Column="4" Grid.Row="1" FontSize="17"/>
+        <ComboBox Name="GroupCmb" Grid.Column="2" Grid.Row="1" SelectionChanged="GroupCmb_SelectionChanged"/>
+        <ComboBox Name="StudentCmb" Grid.Column="6" Grid.Row="1" SelectionChanged="StudentCmb_SelectionChanged"/>
+        <DataGrid Name="ListStudentDg" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО"
+                                    Binding="{Binding Student.Name}"/>
+                <DataGridTextColumn Header="Группа"
+                                    Binding="{Binding Group.Name}"/>
+                <DataGridTextColumn Header="Тест"
+                                    Binding="{Binding Test.Name}"/>
+                <DataGridTextColumn Header="Дата"
+                                    Binding="{Binding DateTest, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Оценка"
+                                    Binding="{Binding Mark}"/>
+            </DataGrid.Columns>    
+        </DataGrid>
+        <Button Name="BackBtn" Content="Назад" Grid.Row="5" Click="BackBtn_Click"/>
+        
+    </Grid>
+</Page>
