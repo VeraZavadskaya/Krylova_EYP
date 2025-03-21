@@ -39,9 +39,12 @@ namespace Krylova_EYP.View.Pages
         private void DeleteStudentBtn_Click(object sender, RoutedEventArgs e)
         {
             Student selectedStudent = StudentLv.SelectedItem as Student;
-            if(selectedStudent != null)
+            MessageBoxResult messageBoxResult = MessageBox.Show("Удалить выбранного студента?", "Удалить", MessageBoxButton.YesNo);
+            if(messageBoxResult == MessageBoxResult.Yes)
             {
-                StudentLv.DataContext = selectedStudent;
+                App.context.Student.Remove(selectedStudent);
+                App.context.SaveChanges();
+                MessageBox.Show("Студент удален");
                 
             }
             
@@ -65,9 +68,5 @@ namespace Krylova_EYP.View.Pages
             }
         }
 
-        private void StudentLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Student Sele = StudentLv.SelectedItem as Student;
-        }
     }
 }
