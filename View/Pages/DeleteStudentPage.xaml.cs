@@ -43,9 +43,8 @@ namespace Krylova_EYP.View.Pages
             if(messageBoxResult == MessageBoxResult.Yes)
             {
                 App.context.Student.Remove(selectedStudent);
-                App.context.SaveChanges();
                 MessageBox.Show("Студент удален");
-                
+
             }
             
         }
@@ -64,7 +63,7 @@ namespace Krylova_EYP.View.Pages
             }
             else
             {
-                StudentLv.ItemsSource = App.context.Student.Where(s => s.IdGroup == group.Id);
+                StudentLv.ItemsSource = App.context.Student.Where(s => s.IdGroup == group.Id).ToList();
             }
         }
 

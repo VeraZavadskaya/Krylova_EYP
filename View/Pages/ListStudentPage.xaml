@@ -40,7 +40,7 @@
                 <DataGridTextColumn Header="ФИО"
                                     Binding="{Binding Student.Name}"/>
                 <DataGridTextColumn Header="Группа"
-                                    Binding="{Binding Group.Name}"/>
+                                    Binding="{Binding Student.Group.Name}"/>
                 <DataGridTextColumn Header="Тест"
                                     Binding="{Binding Test.Name}"/>
                 <DataGridTextColumn Header="Дата"
